@@ -10,11 +10,15 @@ router.route('/').get((req,res)=>{
         .catch(err=> res.status(400).json('Error:' + err))
 })
 router.route('/delete').get((req,res)=>{
-    Received.find()
-        .then(crews => res.json(crews))
-        console.log('hi')
-        .catch(err=> res.status(400).json('Error:' + err))
+    Received.find().deleteMany()
+        .then(data=>{
+            res.status(200).json(data)
+        })
+    
+        
+        
 })
+
 
 router.route('/add').post((req,res)=>{
     const airline = req.body.airline
