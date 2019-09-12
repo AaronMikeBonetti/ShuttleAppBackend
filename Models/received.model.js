@@ -6,7 +6,8 @@ const receivedSchema = new Schema({
     flightNumber:{type:Number,require:true},
     arrivalDate:{type:String,require:true},
     date: {type:Date,require:true}
-}, {
+}, 
+{
     timestamps: true,
 })
 

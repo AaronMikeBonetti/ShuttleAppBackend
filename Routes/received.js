@@ -1,9 +1,18 @@
+//Import Router & Model
 const router = require('express').Router()
 let Received = require('../Models/received.model')
 
+
+//Set Route
 router.route('/').get((req,res)=>{
     Received.find()
         .then(crews => res.json(crews))
+        .catch(err=> res.status(400).json('Error:' + err))
+})
+router.route('/delete').get((req,res)=>{
+    Received.find()
+        .then(crews => res.json(crews))
+        console.log('hi')
         .catch(err=> res.status(400).json('Error:' + err))
 })
 
@@ -15,13 +24,13 @@ router.route('/add').post((req,res)=>{
     const newCrew = new Received({
         airline,
         flightNumber,
-        arrivalDate,
-        
+        arrivalDate,    
     })
 
     newCrew.save()
         .then(()=> res.json('Crew Added!'))
         .catch(err => res.status(400).json('Error' + err))
 })
+
 
 module.exports = router
